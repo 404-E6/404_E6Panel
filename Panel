@@ -41,5 +41,7 @@ local Window = Rayfield:CreateWindow({
 	}
 })
 
-local Tab = Window:CreateTab("Tab Test", 4483362458) -- Title, Image
-local Section = Tab:CreateSection("Section Test")
+local Tab = Window:CreateTab("Main", 4483362458) -- Title, Image
+local Section = Tab:CreateSection("About")
+
+local Tab = Window:CreateTab("Fe Scripts", 4483362458) -- Title, Image
