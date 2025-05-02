@@ -98,3 +98,27 @@ local Toggle = Tab:CreateToggle({
 		
 	end,
 })
+
+local Section = Tab:CreateSection("Prison Life")
+
+local Toggle = Tab:CreateToggle({
+	Name = "Prison Life Admin Commands",
+	CurrentValue = false,
+	Flag = "PLACommands", 
+	Callback = function(Value)
+		loadstring(game:HttpGet("https://scriptblox.com/raw/Prison-Life-Prizz-Admin-14511"))()
+		
+	end,
+})
+
+local Section = Tab:CreateSection("Dead Rails")
+
+local Toggle = Tab:CreateToggle({
+	Name = "Dead Rails Exploits",
+	CurrentValue = false,
+	Flag = "DRExploits", 
+	Callback = function(Value)
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/gumanba/Scripts/main/DeadRails"))()
+
+	end,
+})
