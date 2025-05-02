@@ -54,13 +54,25 @@ local Tab = Window:CreateTab("Panels", 4483362458) -- Title, Image
 local Section = Tab:CreateSection("Basic")
 
 local Toggle = Tab:CreateToggle({
-	Name = "Toggle Example",
+	Name = "Infinite Yield",
 	CurrentValue = false,
-	Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+	Flag = "InfiniteYieldToggle", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 	Callback = function(Value)
 		-- The function that takes place when the toggle is pressed
 		-- The variable (Value) is a boolean on whether the toggle is true or false
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
 		
+	end,
+})
+
+local Toggle = Tab:CreateToggle({
+	Name = "Ann Bypasser",
+	CurrentValue = false,
+	Flag = "AnnBypasserToggle", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+	Callback = function(Value)
+		-- The function that takes place when the toggle is pressed
+		-- The variable (Value) is a boolean on whether the toggle is true or false
+		loadstring(game:HttpGet(('https://rawscripts.net/raw/Universal-Script-Annabypasser-33447'),true))()
+
 	end,
 })
