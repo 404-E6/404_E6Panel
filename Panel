@@ -86,3 +86,15 @@ local Toggle = Tab:CreateToggle({
 
 	end,
 })
+
+local Section = Tab:CreateSection("Brookhaven")
+
+local Toggle = Tab:CreateToggle({
+	Name = "Brookhaven Sound Script",
+	CurrentValue = false,
+	Flag = "BHSoundScript", 
+	Callback = function(Value)
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/ameicaa1/brookhaven-script/main/brookhaven%20script.lua"))()
+		
+	end,
+})
