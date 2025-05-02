@@ -1,7 +1,7 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
 local Tab = Window:CreateTab("Tab Test", 4483362458) -- Title, Image
 local Section = Tab:CreateSection("Section Test")
-
-local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 
 local Window = Rayfield:CreateWindow({
