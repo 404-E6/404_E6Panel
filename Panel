@@ -2,7 +2,7 @@ local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 Rayfield:Notify({
 	Title = "Notification",
-	Content = "Panel Opened",
+	Content = "Panel Loaded",
 	Duration = 6.5,
 	Image = 4483362458,
 })
