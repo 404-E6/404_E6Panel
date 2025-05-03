@@ -56,7 +56,7 @@ local messageConnection
 
 local Toggle = Tab:CreateToggle({
 	Name = "Disable Chat",
-	CurrentValue = false,
+	CurrentValue = true,
 	Flag = "ChatToggle",
 	Callback = function(Value)
 		if Value then
