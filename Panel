@@ -43,26 +43,21 @@ local Window = Rayfield:CreateWindow({
 
 local Tab = Window:CreateTab("Main", 4483362458) -- Title, Image
 local Section = Tab:CreateSection("About")
+local Section = Tab:CreateSection("This is the E6 Exploit Panel")
+
+local Button = Tab:CreateButton({
+	Name = "Delete Panel",
+	Callback = function()
+		-- The function that takes place when the button is pressed
+		Rayfield:Destroy()
+	end,
+})
 
 local Tab = Window:CreateTab("Fe Scripts", 4483362458) -- Title, Image
 local Section = Tab:CreateSection("Scripts")
 
 local Tab = Window:CreateTab("Client Scripts", 4483362458) -- Title, Image
 local Section = Tab:CreateSection("Scripts")
-
-local TextChatService = game:GetService("TextChatService")
-local messageConnection
-
-local Toggle = Tab:CreateToggle({
-	Name = "Disable Chat",
-	CurrentValue = false,
-	Flag = "ChatToggle",
-	Callback = function(Value)
-		
-		
-	end,
-})
-
 
 
 local Tab = Window:CreateTab("Panels", 4483362458) -- Title, Image
@@ -87,6 +82,16 @@ local Toggle = Tab:CreateToggle({
 	Callback = function(Value)
 		loadstring(game:HttpGet(('https://rawscripts.net/raw/Universal-Script-Annabypasser-33447'),true))()
 
+	end,
+})
+
+local Toggle = Tab:CreateToggle({
+	Name = "Jerk Off",
+	CurrentValue = false,
+	Flag = "JerkOffToggle", 
+	Callback = function(Value)
+		loadstring(game:HttpGet(('https://pastebin.com/raw/H5PfZB5y'),true))()
+		
 	end,
 })
 
@@ -146,5 +151,29 @@ local Toggle = Tab:CreateToggle({
 	Callback = function(Value)
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/gumanba/Scripts/main/DeadRails"))()
 
+	end,
+})
+
+local Section = Tab:CreateSection("Rivals")
+
+local Toggle = Tab:CreateToggle({
+	Name = "econ",
+	CurrentValue = false,
+	Flag = "RivalEcone", 
+	Callback = function(Value)
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/ConePartyy/Econ/refs/heads/main/Init.txt'))()
+		
+	end,
+})
+
+local Section = Tab:CreateSection("Break in Story")
+
+local Toggle = Tab:CreateToggle({
+	Name = "Break in Story 1",
+	CurrentValue = false,
+	Flag = "BIS1", 
+	Callback = function(Value)
+		loadstring(game:HttpGet("https://pastebin.com/raw/JCWALTth"))()
+		
 	end,
 })
