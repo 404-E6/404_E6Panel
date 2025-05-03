@@ -50,6 +50,26 @@ local Section = Tab:CreateSection("Scripts")
 local Tab = Window:CreateTab("Client Scripts", 4483362458) -- Title, Image
 local Section = Tab:CreateSection("Scripts")
 
+local Toggle = Tab:CreateToggle({
+	Name = "Disable Chat",
+	CurrentValue = false,
+	Flag = "ChatToggle", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+	Callback = function(Value)
+		-- The function that takes place when the toggle is pressed
+		-- The variable (Value) is a boolean on whether the toggle is true or false
+		local TextChatService = game:GetService("TextChatService")
+
+		TextChatService.OnIncomingMessage = function(message)
+			if string.sub(message.Text, 1, 1) == ";" then
+				local newProperties = Instance.new("TextChatMessageProperties")
+				newProperties.Text = " " -- Replace with a space or leave empty
+				return newProperties
+			end
+		end
+	end,
+})
+
+
 local Tab = Window:CreateTab("Panels", 4483362458) -- Title, Image
 local Section = Tab:CreateSection("Basic")
 
@@ -74,6 +94,17 @@ local Toggle = Tab:CreateToggle({
 
 	end,
 })
+
+local Toggle = Tab:CreateToggle({
+	Name = "God Mode",
+	CurrentValue = false,
+	Flag = "GodModeToggle", 
+	Callback = function(Value)
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/retpirato/Roblox-Scripts/master/Fe%20Shattervast.lua", true))()
+
+	end,
+})
+
 
 local Section = Tab:CreateSection("Natural Disaster Survival")
 
