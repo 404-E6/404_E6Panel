@@ -51,22 +51,31 @@ local Section = Tab:CreateSection("Scripts")
 local Tab = Window:CreateTab("Client Scripts", 4483362458) -- Title, Image
 local Section = Tab:CreateSection("Scripts")
 
+local TextChatService = game:GetService("TextChatService")
+local messageConnection
+
 local Toggle = Tab:CreateToggle({
 	Name = "Disable Chat",
 	CurrentValue = false,
-	Flag = "ChatToggle", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+	Flag = "ChatToggle",
 	Callback = function(Value)
-		-- The function that takes place when the toggle is pressed
-		-- The variable (Value) is a boolean on whether the toggle is true or false
-		TextChatService.OnIncomingMessage = function(message)
-			if string.sub(message.Text, 1, 1) == ";" then
+		if Value then
+			-- Disable chat by modifying incoming messages
+			messageConnection = TextChatService.OnIncomingMessage:Connect(function(message)
 				local newProperties = Instance.new("TextChatMessageProperties")
-				newProperties.Text = " " -- Replace with a space or leave empty
+				newProperties.Text = " " -- Hide the message
 				return newProperties
+			end)
+		else
+			-- Re-enable chat by disconnecting the message filter
+			if messageConnection then
+				messageConnection:Disconnect()
+				messageConnection = nil
 			end
 		end
 	end,
 })
+
 
 
 local Tab = Window:CreateTab("Panels", 4483362458) -- Title, Image
