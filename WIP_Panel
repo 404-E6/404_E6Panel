@@ -103,6 +103,111 @@ local Toggle = Tab:CreateToggle({
 	CurrentValue = false,
 	Flag = "JerkOffToggle", 
 	Callback = function(Value)
+		loadstring(game:HttpGet(('https://palocal Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+Rayfield:Notify({
+	Title = "Notification",
+	Content = "Panel Loaded",
+	Duration = 6.5,
+	Image = 4483362458,
+})
+
+local Window = Rayfield:CreateWindow({
+	Name = "WIP E6 Exploit Panel",
+	Icon = 123003559214351, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
+	LoadingTitle = "404_E6",
+	LoadingSubtitle = "Version: 1.0.1",
+	Theme = "AmberGlow", -- Check https://docs.sirius.menu/rayfield/configuration/themes
+
+	DisableRayfieldPrompts = true,
+	DisableBuildWarnings = false, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
+
+	ConfigurationSaving = {
+		Enabled = true,
+		FolderName = nil, -- Create a custom folder for your hub/game
+		FileName = "E6"
+	},
+
+	Discord = {
+		Enabled = false, -- Prompt the user to join your Discord server if their executor supports it
+		Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ ABCD would be ABCD
+		RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+	},
+
+	KeySystem = true, -- Set this to true to use our key system
+	KeySettings = {
+		Title = "E6 Exploit Panel",
+		Subtitle = "E6 Panel Key System",
+		Note = "Join E6 To Obtain The Key", -- Use this to tell the user how to get a key
+		FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+		SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+		GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+		Key = {"E6PK4044567-AWIFDSNAM6238"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+	}
+})
+
+local Tab = Window:CreateTab("Main", 4483362458) -- Title, Image
+local Section = Tab:CreateSection("Tests (these are beta fetures or ones which should only be used for testing purposes use these fetures at your own risk)")
+
+local Button = Tab:CreateButton({
+	Name = "Delete Panel",
+	Callback = function()
+		-- The function that takes place when the button is pressed
+		Rayfield:Destroy()
+	end,
+})
+
+local Tab = Window:CreateTab("Fe Scripts", 4483362458)
+local Section = Tab:CreateSection("Scripts")
+
+local Button = Tab:CreateButton({
+	Name = "Shutdown",
+	Callback = function()
+		-- The function that takes place when the button is pressed
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/ZhenX201/FE-Server-Crash/main/source"))()
+
+	end,
+})
+
+local Tab = Window:CreateTab("Client Scripts", 4483362458)
+local Section = Tab:CreateSection("Scripts")
+
+
+local Tab = Window:CreateTab("Panels", 4483362458)
+local Section = Tab:CreateSection("Basic")
+
+local Toggle = Tab:CreateToggle({
+	Name = "Infinite Yield",
+	CurrentValue = false,
+	Flag = "InfiniteYieldToggle", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+	Callback = function(Value)
+		-- The function that takes place when the toggle is pressed
+		-- The variable (Value) is a boolean on whether the toggle is true or false
+		if CurrentValue = true then
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+		else
+			
+		
+	end
+		
+	end,
+})
+
+local Toggle = Tab:CreateToggle({
+	Name = "Anna Bypasser",
+	CurrentValue = false,
+	Flag = "AnnaBypasserToggle", 
+	Callback = function(Value)
+		loadstring(game:HttpGet(('https://rawscripts.net/raw/Universal-Script-Annabypasser-33447'),true))()
+
+	end,
+})
+
+local Toggle = Tab:CreateToggle({
+	Name = "Jerk Off",
+	CurrentValue = false,
+	Flag = "JerkOffToggle", 
+	Callback = function(Value)
 		loadstring(game:HttpGet(('https://pastebin.com/raw/H5PfZB5y'),true))()
 		
 	end,
