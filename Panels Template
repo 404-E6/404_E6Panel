@@ -14,8 +14,8 @@ if debugX then
 end
 
 local function getService(name)
-    local service = game:GetService(name)
-    return if cloneref then cloneref(service) else service
+	local service = game:GetService(name)
+	return if cloneref then cloneref(service) else service
 end
 
 -- Loads and executes a function hosted on a remote URL. Cancels the request if the requested URL takes too long to respond.
@@ -102,7 +102,7 @@ local request = (syn and syn.request) or (fluxus and fluxus.request) or (http an
 
 local function loadSettings()
 	local file = nil
-	
+
 	local success, result =	pcall(function()
 		task.spawn(function()
 			if isfolder and isfolder(RayfieldFolder) then
@@ -150,7 +150,7 @@ local function loadSettings()
 			end
 		end)
 	end)
-	
+
 	if not success then 
 		if writefile then
 			warn('Rayfield had an issue accessing configuration saving capability.')
@@ -605,6 +605,47 @@ local RayfieldLibrary = {
 			InputBackground = Color3.fromRGB(220, 230, 240),
 			InputStroke = Color3.fromRGB(180, 190, 200),
 			PlaceholderColor = Color3.fromRGB(150, 150, 150)
+		},
+
+		BloodRed = {
+			TextColor = Color3.fromRGB(161, 19, 26),
+			Background = Color3.fromRGB(0, 0, 0),
+			Topbar = Color3.fromRGB(185, 12, 0),
+			Shadow = Color3.fromRGB(138, 15, 0),
+
+			NotificationBackground = Color3.fromRGB(121, 0, 12),
+			NotificationActionsBackground = Color3.fromRGB(170, 0, 0),
+
+			TabBackground = Color3.fromRGB(227, 3, 0),
+			TabStroke = Color3.fromRGB(110, 0, 2),
+			TabBackgroundSelected = Color3.fromRGB(123, 17, 0),
+			TabTextColor = Color3.fromRGB(84, 0, 7),
+			SelectedTabTextColor = Color3.fromRGB(209, 35, 5),
+
+			ElementBackground = Color3.fromRGB(206, 25, 4),
+			ElementBackgroundHover = Color3.fromRGB(117, 0, 0),
+			SecondaryElementBackground = Color3.fromRGB(215, 0, 0),
+			ElementStroke = Color3.fromRGB(162, 24, 0),
+			SecondaryElementStroke = Color3.fromRGB(173, 8, 0),
+
+			SliderBackground = Color3.fromRGB(64, 5, 0),  -- Lighter shade
+			SliderProgress = Color3.fromRGB(255, 20, 0),
+			SliderStroke = Color3.fromRGB(160, 2, 0),
+
+			ToggleBackground = Color3.fromRGB(119, 11, 0),
+			ToggleEnabled = Color3.fromRGB(255, 14, 0),
+			ToggleDisabled = Color3.fromRGB(148, 17, 1),
+			ToggleEnabledStroke = Color3.fromRGB(153, 0, 3),
+			ToggleDisabledStroke = Color3.fromRGB(135, 17, 9),
+			ToggleEnabledOuterStroke = Color3.fromRGB(173, 8, 0),
+			ToggleDisabledOuterStroke = Color3.fromRGB(128, 0, 0),
+
+			DropdownSelected = Color3.fromRGB(243, 3, 0),
+			DropdownUnselected = Color3.fromRGB(130, 9, 0),
+
+			InputBackground = Color3.fromRGB(106, 0, 7),
+			InputStroke = Color3.fromRGB(210, 0, 9),
+			PlaceholderColor = Color3.fromRGB(72, 69, 68)
 		},
 	}
 }
@@ -3483,9 +3524,9 @@ function RayfieldLibrary:CreateWindow(Settings)
 	local success, result = pcall(function()
 		createSettings(Window)
 	end)
-	
+
 	if not success then warn('Rayfield had an issue creating settings.') end
-	
+
 	return Window
 end
 
