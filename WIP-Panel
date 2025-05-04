@@ -1,4 +1,10 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local noclipConnection = nil
+
 
 Rayfield:Notify({
 	Title = "Notification",
@@ -8,7 +14,7 @@ Rayfield:Notify({
 })
 
 local Window = Rayfield:CreateWindow({
-	Name = "E6 Testing Panel",
+	Name = "E6 Exploit Panel",
 	Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
 	LoadingTitle = "404_E6",
 	LoadingSubtitle = "Version: 1.0.1",
@@ -31,9 +37,9 @@ local Window = Rayfield:CreateWindow({
 
 	KeySystem = true, -- Set this to true to use our key system
 	KeySettings = {
-		Title = "E6 Testing Panel",
+		Title = "E6 Exploit Panel",
 		Subtitle = "E6 Panel Key System",
-		Note = "Only E6 has acces to this key", -- Use this to tell the user how to get a key
+		Note = "Join E6 To Obtain The Key", -- Use this to tell the user how to get a key
 		FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
 		SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
 		GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
@@ -76,7 +82,7 @@ local Dropdown = Tab:CreateDropdown({
 		if Options == "Default" then
 			local Theme = "Default"
 		end
-		
+
 		if Options == "Amber Glow" then
 			local Theme = "AmberGlow"
 		end
@@ -89,6 +95,39 @@ local Section = Tab:CreateSection("Scripts")
 local Tab = Window:CreateTab("Client Scripts", 4483362458)
 local Section = Tab:CreateSection("Scripts")
 
+local Toggle = Tab:CreateToggle({
+	Name = "Noclip",
+	CurrentValue = false,
+	Flag = "NoclipToggle",
+	Callback = function(Value)
+		-- Re-check character in case player respawned
+		character = player.Character or player.CharacterAdded:Wait()
+
+		if Value then
+			-- Enable noclip
+			noclipConnection = RunService.Stepped:Connect(function()
+				for _, part in pairs(character:GetDescendants()) do
+					if part:IsA("BasePart") and part.CanCollide then
+						part.CanCollide = false
+					end
+				end
+			end)
+		else
+			-- Disable noclip
+			if noclipConnection then
+				noclipConnection:Disconnect()
+				noclipConnection = nil
+			end
+
+			-- Restore collisions
+			for _, part in pairs(character:GetDescendants()) do
+				if part:IsA("BasePart") then
+					part.CanCollide = true
+				end
+			end
+		end
+	end,
+})
 
 local Tab = Window:CreateTab("Panels", 4483362458)
 local Section = Tab:CreateSection("Basic")
@@ -101,7 +140,7 @@ local Toggle = Tab:CreateToggle({
 		-- The function that takes place when the toggle is pressed
 		-- The variable (Value) is a boolean on whether the toggle is true or false
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
-		
+
 	end,
 })
 
@@ -121,7 +160,7 @@ local Toggle = Tab:CreateToggle({
 	Flag = "JerkOffToggle", 
 	Callback = function(Value)
 		loadstring(game:HttpGet(('https://pastebin.com/raw/H5PfZB5y'),true))()
-		
+
 	end,
 })
 
@@ -156,7 +195,7 @@ local Toggle = Tab:CreateToggle({
 	Flag = "BHSoundScript", 
 	Callback = function(Value)
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/ameicaa1/brookhaven-script/main/brookhaven%20script.lua"))()
-		
+
 	end,
 })
 
@@ -168,7 +207,7 @@ local Toggle = Tab:CreateToggle({
 	Flag = "PLACommands", 
 	Callback = function(Value)
 		loadstring(game:HttpGet("https://scriptblox.com/raw/Prison-Life-Prizz-Admin-14511"))()
-		
+
 	end,
 })
 
@@ -192,7 +231,7 @@ local Toggle = Tab:CreateToggle({
 	Flag = "RivalEcone", 
 	Callback = function(Value)
 		loadstring(game:HttpGet('https://raw.githubusercontent.com/ConePartyy/Econ/refs/heads/main/Init.txt'))()
-		
+
 	end,
 })
 
@@ -204,6 +243,6 @@ local Toggle = Tab:CreateToggle({
 	Flag = "BIS1", 
 	Callback = function(Value)
 		loadstring(game:HttpGet("https://pastebin.com/raw/JCWALTth"))()
-		
+
 	end,
 })
