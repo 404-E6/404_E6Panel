@@ -8,11 +8,11 @@ Rayfield:Notify({
 })
 
 local Window = Rayfield:CreateWindow({
-	Name = "WIP E6 Exploit Panel",
-	Icon = 123003559214351, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
+	Name = "E6 Exploit Panel",
+	Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
 	LoadingTitle = "404_E6",
 	LoadingSubtitle = "Version: 1.0.1",
-	Theme = "AmberGlow", -- Check https://docs.sirius.menu/rayfield/configuration/themes
+	Theme = "Default", -- Check https://docs.sirius.menu/rayfield/configuration/themes
 
 	DisableRayfieldPrompts = true,
 	DisableBuildWarnings = false, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
@@ -37,12 +37,12 @@ local Window = Rayfield:CreateWindow({
 		FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
 		SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
 		GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
-		Key = {"E6PK4044567-AWIFDSNAM6238"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+		Key = {"TempKey404E6-67456QUDSBWL", "E6PK4044567-AWIFDSNAM6238"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
 	}
 })
 
 local Tab = Window:CreateTab("Main", 4483362458) -- Title, Image
-local Section = Tab:CreateSection("Tests (these are beta fetures or ones which should only be used for testing purposes use these fetures at your own risk)")
+local Section = Tab:CreateSection("Testing (Used for Testing purposes ONLY use at your own risk)")
 
 local Button = Tab:CreateButton({
 	Name = "Delete Panel",
@@ -52,17 +52,39 @@ local Button = Tab:CreateButton({
 	end,
 })
 
-local Tab = Window:CreateTab("Fe Scripts", 4483362458)
-local Section = Tab:CreateSection("Scripts")
-
-local Button = Tab:CreateButton({
-	Name = "Shutdown",
-	Callback = function()
-		-- The function that takes place when the button is pressed
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/ZhenX201/FE-Server-Crash/main/source"))()
+local Toggle = Tab:CreateToggle({
+	Name = "Testing Panel",
+	CurrentValue = false,
+	Flag = "TestPanelToggle", 
+	Callback = function(Value)
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/404-E6/404_E6Panel/refs/heads/main/WIP-Panel'))()
 
 	end,
 })
+
+local Section = Tab:CreateSection("Beta Fetures (Used for Testing purposes ONLY use at your own risk)")
+
+local Dropdown = Tab:CreateDropdown({
+	Name = "Theme Select",
+	Options = {"Default","Amber Glow"},
+	CurrentOption = {"Default"},
+	MultipleOptions = false,
+	Flag = "Dropdown1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+	Callback = function(Options)
+		-- The function that takes place when the selected option is changed
+		-- The variable (Options) is a table of strings for the current selected options
+		if Options == "Default" then
+			local Theme = "Default"
+		end
+		
+		if Options == "Amber Glow" then
+			local Theme = "AmberGlow"
+		end
+	end,
+})
+
+local Tab = Window:CreateTab("Fe Scripts", 4483362458)
+local Section = Tab:CreateSection("Scripts")
 
 local Tab = Window:CreateTab("Client Scripts", 4483362458)
 local Section = Tab:CreateSection("Scripts")
@@ -78,12 +100,7 @@ local Toggle = Tab:CreateToggle({
 	Callback = function(Value)
 		-- The function that takes place when the toggle is pressed
 		-- The variable (Value) is a boolean on whether the toggle is true or false
-		if CurrentValue = true then
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
-		else
-			
-		
-	end
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
 		
 	end,
 })
@@ -152,6 +169,18 @@ local Toggle = Tab:CreateToggle({
 	Callback = function(Value)
 		loadstring(game:HttpGet("https://scriptblox.com/raw/Prison-Life-Prizz-Admin-14511"))()
 		
+	end,
+})
+
+local Section = Tab:CreateSection("Dead Rails")
+
+local Toggle = Tab:CreateToggle({
+	Name = "Dead Rails Exploits",
+	CurrentValue = false,
+	Flag = "DRExploits", 
+	Callback = function(Value)
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/gumanba/Scripts/main/DeadRails"))()
+
 	end,
 })
 
