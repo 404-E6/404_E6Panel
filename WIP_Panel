@@ -1,4 +1,4 @@
-local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/404-E6/404_E6Panel/refs/heads/main/Panels-Template'))()
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 Rayfield:Notify({
 	Title = "Notification",
