@@ -1,4 +1,4 @@
-local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/404-E6/404_E6Panel/refs/heads/main/Panels-Template'))()
 
 Rayfield:Notify({
 	Title = "Notification",
@@ -8,7 +8,7 @@ Rayfield:Notify({
 })
 
 local Window = Rayfield:CreateWindow({
-	Name = "E6 Exploit Panel",
+	Name = "WIP E6 Exploit Panel",
 	Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
 	LoadingTitle = "404_E6",
 	LoadingSubtitle = "Version: 1.0.1",
@@ -42,8 +42,7 @@ local Window = Rayfield:CreateWindow({
 })
 
 local Tab = Window:CreateTab("Main", 4483362458) -- Title, Image
-local Section = Tab:CreateSection("About")
-local Section = Tab:CreateSection("This is the E6 Exploit Panel")
+local Section = Tab:CreateSection("Tests (these are beta fetures or ones which should only be used for testing purposes use these fetures at your own risk)")
 
 local Button = Tab:CreateButton({
 	Name = "Delete Panel",
@@ -79,7 +78,12 @@ local Toggle = Tab:CreateToggle({
 	Callback = function(Value)
 		-- The function that takes place when the toggle is pressed
 		-- The variable (Value) is a boolean on whether the toggle is true or false
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+		if CurrentValue = true then
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+		else
+			
+		
+	end
 		
 	end,
 })
@@ -148,18 +152,6 @@ local Toggle = Tab:CreateToggle({
 	Callback = function(Value)
 		loadstring(game:HttpGet("https://scriptblox.com/raw/Prison-Life-Prizz-Admin-14511"))()
 		
-	end,
-})
-
-local Section = Tab:CreateSection("Dead Rails")
-
-local Toggle = Tab:CreateToggle({
-	Name = "Dead Rails Exploits",
-	CurrentValue = false,
-	Flag = "DRExploits", 
-	Callback = function(Value)
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/gumanba/Scripts/main/DeadRails"))()
-
 	end,
 })
 
