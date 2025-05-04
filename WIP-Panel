@@ -8,7 +8,7 @@ Rayfield:Notify({
 })
 
 local Window = Rayfield:CreateWindow({
-	Name = "E6 Exploit Panel",
+	Name = "E6 Testing Panel",
 	Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
 	LoadingTitle = "404_E6",
 	LoadingSubtitle = "Version: 1.0.1",
