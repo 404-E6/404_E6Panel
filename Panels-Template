@@ -607,46 +607,46 @@ local RayfieldLibrary = {
 			PlaceholderColor = Color3.fromRGB(150, 150, 150)
 		},
 
-		BloodRed = {
-			TextColor = Color3.fromRGB(161, 19, 26),
-			Background = Color3.fromRGB(0, 0, 0),
-			Topbar = Color3.fromRGB(185, 12, 0),
-			Shadow = Color3.fromRGB(138, 15, 0),
+--		BloodRed = {
+--			TextColor = Color3.fromRGB(161, 19, 26),
+--			Background = Color3.fromRGB(0, 0, 0),
+--			Topbar = Color3.fromRGB(185, 12, 0),
+--			Shadow = Color3.fromRGB(138, 15, 0),
 
-			NotificationBackground = Color3.fromRGB(121, 0, 12),
-			NotificationActionsBackground = Color3.fromRGB(170, 0, 0),
+--			NotificationBackground = Color3.fromRGB(121, 0, 12),
+--			NotificationActionsBackground = Color3.fromRGB(170, 0, 0),
 
-			TabBackground = Color3.fromRGB(227, 3, 0),
-			TabStroke = Color3.fromRGB(110, 0, 2),
-			TabBackgroundSelected = Color3.fromRGB(123, 17, 0),
-			TabTextColor = Color3.fromRGB(84, 0, 7),
-			SelectedTabTextColor = Color3.fromRGB(209, 35, 5),
+--			TabBackground = Color3.fromRGB(227, 3, 0),
+--			TabStroke = Color3.fromRGB(110, 0, 2),
+--			TabBackgroundSelected = Color3.fromRGB(123, 17, 0),
+--			TabTextColor = Color3.fromRGB(84, 0, 7),
+--			SelectedTabTextColor = Color3.fromRGB(209, 35, 5),
 
-			ElementBackground = Color3.fromRGB(206, 25, 4),
-			ElementBackgroundHover = Color3.fromRGB(117, 0, 0),
-			SecondaryElementBackground = Color3.fromRGB(215, 0, 0),
-			ElementStroke = Color3.fromRGB(162, 24, 0),
-			SecondaryElementStroke = Color3.fromRGB(173, 8, 0),
+--			ElementBackground = Color3.fromRGB(206, 25, 4),
+--			ElementBackgroundHover = Color3.fromRGB(117, 0, 0),
+--			SecondaryElementBackground = Color3.fromRGB(215, 0, 0),
+--			ElementStroke = Color3.fromRGB(162, 24, 0),
+--			SecondaryElementStroke = Color3.fromRGB(173, 8, 0),
 
-			SliderBackground = Color3.fromRGB(64, 5, 0),  -- Lighter shade
-			SliderProgress = Color3.fromRGB(255, 20, 0),
-			SliderStroke = Color3.fromRGB(160, 2, 0),
+--			SliderBackground = Color3.fromRGB(64, 5, 0),  -- Lighter shade
+--			SliderProgress = Color3.fromRGB(255, 20, 0),
+--			SliderStroke = Color3.fromRGB(160, 2, 0),
 
-			ToggleBackground = Color3.fromRGB(119, 11, 0),
-			ToggleEnabled = Color3.fromRGB(255, 14, 0),
-			ToggleDisabled = Color3.fromRGB(148, 17, 1),
-			ToggleEnabledStroke = Color3.fromRGB(153, 0, 3),
-			ToggleDisabledStroke = Color3.fromRGB(135, 17, 9),
-			ToggleEnabledOuterStroke = Color3.fromRGB(173, 8, 0),
-			ToggleDisabledOuterStroke = Color3.fromRGB(128, 0, 0),
+--			ToggleBackground = Color3.fromRGB(119, 11, 0),
+--			ToggleEnabled = Color3.fromRGB(255, 14, 0),
+--			ToggleDisabled = Color3.fromRGB(148, 17, 1),
+--			ToggleEnabledStroke = Color3.fromRGB(153, 0, 3),
+--			ToggleDisabledStroke = Color3.fromRGB(135, 17, 9),
+--			ToggleEnabledOuterStroke = Color3.fromRGB(173, 8, 0),
+--			ToggleDisabledOuterStroke = Color3.fromRGB(128, 0, 0),
 
-			DropdownSelected = Color3.fromRGB(243, 3, 0),
-			DropdownUnselected = Color3.fromRGB(130, 9, 0),
+--			DropdownSelected = Color3.fromRGB(243, 3, 0),
+--			DropdownUnselected = Color3.fromRGB(130, 9, 0),
 
-			InputBackground = Color3.fromRGB(106, 0, 7),
-			InputStroke = Color3.fromRGB(210, 0, 9),
-			PlaceholderColor = Color3.fromRGB(72, 69, 68)
-		},
+--			InputBackground = Color3.fromRGB(106, 0, 7),
+--			InputStroke = Color3.fromRGB(210, 0, 9),
+--			PlaceholderColor = Color3.fromRGB(72, 69, 68)
+--		},
 	}
 }
 
@@ -659,7 +659,7 @@ local CoreGui = getService("CoreGui")
 
 -- Interface Management
 
-local Rayfield = useStudio and script.Parent:FindFirstChild('Rayfield') or game:GetObjects("rbxassetid://10804731440")[1]
+local Rayfield = useStudio and script.Parent:FindFirstChild('E6') or game:GetObjects("rbxassetid://10804731440")[1]
 local buildAttempts = 0
 local correctBuild = false
 local warned
@@ -1652,9 +1652,9 @@ function RayfieldLibrary:CreateWindow(Settings)
 			while true do
 				task.wait(math.random(180, 600))
 				RayfieldLibrary:Notify({
-					Title = "Rayfield Interface",
-					Content = "Enjoying this UI library? Find it at sirius.menu/discord",
-					Duration = 7,
+					Title = "E6",
+					Content = ":)",
+					Duration = 1,
 					Image = 4370033185,
 				})
 			end
