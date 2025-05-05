@@ -4,11 +4,14 @@ local RunService = game:GetService("RunService")
 local player = Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
 local hrp = character:WaitForChild("HumanoidRootPart")
+local humanoid = character:WaitForChild("Humanoid")
+
 
 
 --Connections
 local noclipConnection = nil
-local spinConnection = nil
+local fakeSeat = nil
+local monitorConnection = nil
 
 
 
@@ -136,52 +139,20 @@ local Toggle = Tab:CreateToggle({
 	end,
 })
 
+
+
 local Toggle = Tab:CreateToggle({
-	Name = "Fling (Spin Character)",
+	Name = "Sit",
 	CurrentValue = false,
-	Flag = "SpinFlingToggle",
+	Flag = "SitToggle",
 	Callback = function(Value)
 		character = player.Character or player.CharacterAdded:Wait()
-		hrp = character:WaitForChild("HumanoidRootPart")
+		humanoid = character:WaitForChild("Humanoid")
 
 		if Value then
-			-- Make sure all parts are massless (optional, more control)
-			for _, part in ipairs(character:GetDescendants()) do
-				if part:IsA("BasePart") then
-					part.Massless = true
-				end
-			end
-
-			-- Enable PlatformStand for more control (optional)
-			local humanoid = character:FindFirstChildOfClass("Humanoid")
-			if humanoid then
-				humanoid.PlatformStand = true
-			end
-
-			-- Constantly spin the HRP using AssemblyAngularVelocity
-			spinConnection = RunService.Heartbeat:Connect(function()
-				hrp.AssemblyAngularVelocity = Vector3.new(0, 150, 0) -- Spin fast around Y axis
-			end)
+			humanoid.Sit = true
 		else
-			if spinConnection then
-				spinConnection:Disconnect()
-				spinConnection = nil
-			end
-
-			-- Stop spinning
-			hrp.AssemblyAngularVelocity = Vector3.zero
-
-			-- Reset physics if desired
-			local humanoid = character:FindFirstChildOfClass("Humanoid")
-			if humanoid then
-				humanoid.PlatformStand = false
-			end
-
-			for _, part in ipairs(character:GetDescendants()) do
-				if part:IsA("BasePart") then
-					part.Massless = false
-				end
-			end
+			humanoid.Sit = false
 		end
 	end,
 })
