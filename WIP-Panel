@@ -3,9 +3,13 @@ local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local player = Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
+local hrp = character:WaitForChild("HumanoidRootPart")
 
---noclip
+
+--Connections
 local noclipConnection = nil
+local flingConnection = nil
+
 
 
 Rayfield:Notify({
@@ -125,6 +129,45 @@ local Toggle = Tab:CreateToggle({
 			for _, part in pairs(character:GetDescendants()) do
 				if part:IsA("BasePart") then
 					part.CanCollide = true
+				end
+			end
+		end
+	end,
+})
+
+local Toggle = Tab:CreateToggle({
+	Name = "Fling",
+	CurrentValue = false,
+	Flag = "FlingToggle",
+	Callback = function(Value)
+		character = player.Character or player.CharacterAdded:Wait()
+		hrp = character:WaitForChild("HumanoidRootPart")
+
+		if Value then
+			-- Set massless to avoid flinging yourself too much
+			for _, part in pairs(character:GetDescendants()) do
+				if part:IsA("BasePart") then
+					part.Massless = true
+				end
+			end
+
+			-- Apply angular velocity
+			local flingForce = Instance.new("BodyAngularVelocity")
+			flingForce.AngularVelocity = Vector3.new(0, 999999, 0) -- Spin fast
+			flingForce.MaxTorque = Vector3.new(0, math.huge, 0)
+			flingForce.P = 1250
+			flingForce.Name = "FlingForce"
+			flingForce.Parent = hrp
+		else
+			-- Remove the fling force
+			if hrp:FindFirstChild("FlingForce") then
+				hrp.FlingForce:Destroy()
+			end
+
+			-- Reset massless state
+			for _, part in pairs(character:GetDescendants()) do
+				if part:IsA("BasePart") then
+					part.Massless = false
 				end
 			end
 		end
