@@ -8,7 +8,10 @@ local hrp = character:WaitForChild("HumanoidRootPart")
 
 --Connections
 local noclipConnection = nil
-local flingConnection = nil
+--local flingConnection = nil
+local flingPart = nil
+local bodyAngularVelocity = nil
+local weld = nil
 
 
 
@@ -140,35 +143,45 @@ local Toggle = Tab:CreateToggle({
 	CurrentValue = false,
 	Flag = "FlingToggle",
 	Callback = function(Value)
-		character = player.Character or player.CharacterAdded:Wait()
-		hrp = character:WaitForChild("HumanoidRootPart")
-
 		if Value then
-			-- Set massless to avoid flinging yourself too much
-			for _, part in pairs(character:GetDescendants()) do
-				if part:IsA("BasePart") then
-					part.Massless = true
-				end
-			end
+			-- Create fling part
+			flingPart = Instance.new("Part")
+			flingPart.Size = Vector3.new(5, 1, 5)
+			flingPart.Transparency = 1
+			flingPart.Anchored = false
+			flingPart.CanCollide = false
+			flingPart.Massless = true
+			flingPart.Name = "FlingPart"
+			flingPart.Parent = workspace
 
-			-- Apply angular velocity
-			local flingForce = Instance.new("BodyAngularVelocity")
-			flingForce.AngularVelocity = Vector3.new(0, 999999, 0) -- Spin fast
-			flingForce.MaxTorque = Vector3.new(0, math.huge, 0)
-			flingForce.P = 1250
-			flingForce.Name = "FlingForce"
-			flingForce.Parent = hrp
+			-- Position it with the player
+			flingPart.CFrame = hrp.CFrame
+
+			-- Weld to the player
+			weld = Instance.new("WeldConstraint")
+			weld.Part0 = hrp
+			weld.Part1 = flingPart
+			weld.Parent = flingPart
+
+			-- Add BodyAngularVelocity
+			bodyAngularVelocity = Instance.new("BodyAngularVelocity")
+			bodyAngularVelocity.AngularVelocity = Vector3.new(0, 50000, 0)
+			bodyAngularVelocity.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)
+			bodyAngularVelocity.P = 100000
+			bodyAngularVelocity.Parent = flingPart
 		else
-			-- Remove the fling force
-			if hrp:FindFirstChild("FlingForce") then
-				hrp.FlingForce:Destroy()
+			-- Cleanup
+			if bodyAngularVelocity then
+				bodyAngularVelocity:Destroy()
+				bodyAngularVelocity = nil
 			end
-
-			-- Reset massless state
-			for _, part in pairs(character:GetDescendants()) do
-				if part:IsA("BasePart") then
-					part.Massless = false
-				end
+			if weld then
+				weld:Destroy()
+				weld = nil
+			end
+			if flingPart then
+				flingPart:Destroy()
+				flingPart = nil
 			end
 		end
 	end,
