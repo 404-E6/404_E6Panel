@@ -157,6 +157,27 @@ local Toggle = Tab:CreateToggle({
 	end,
 })
 
+local Toggle = Tab:CreateToggle({
+	Name = "Fall",
+	CurrentValue = false,
+	Flag = "FallToggle",
+	Callback = function(Value)
+		character = player.Character or player.CharacterAdded:Wait()
+		humanoid = character:WaitForChild("Humanoid")
+		local hrp = character:WaitForChild("HumanoidRootPart")
+
+		if Value then
+			-- Simulate fall: ragdoll + freeze
+			humanoid.PlatformStand = true
+			hrp.Anchored = true -- "Stuck" to the ground
+		else
+			-- Stand back up
+			humanoid.PlatformStand = false
+			hrp.Anchored = false
+		end
+	end,
+})
+
 local Tab = Window:CreateTab("Panels", 4483362458)
 local Section = Tab:CreateSection("Basic")
 
