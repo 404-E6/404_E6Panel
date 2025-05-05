@@ -8,10 +8,8 @@ local hrp = character:WaitForChild("HumanoidRootPart")
 
 --Connections
 local noclipConnection = nil
---local flingConnection = nil
-local flingPart = nil
-local bodyAngularVelocity = nil
-local weld = nil
+local spinConnection = nil
+
 
 
 
@@ -139,49 +137,50 @@ local Toggle = Tab:CreateToggle({
 })
 
 local Toggle = Tab:CreateToggle({
-	Name = "Fling",
+	Name = "Fling (Spin Character)",
 	CurrentValue = false,
-	Flag = "FlingToggle",
+	Flag = "SpinFlingToggle",
 	Callback = function(Value)
+		character = player.Character or player.CharacterAdded:Wait()
+		hrp = character:WaitForChild("HumanoidRootPart")
+
 		if Value then
-			-- Create fling part
-			flingPart = Instance.new("Part")
-			flingPart.Size = Vector3.new(5, 1, 5)
-			flingPart.Transparency = 1
-			flingPart.Anchored = false
-			flingPart.CanCollide = false
-			flingPart.Massless = true
-			flingPart.Name = "FlingPart"
-			flingPart.Parent = workspace
+			-- Make sure all parts are massless (optional, more control)
+			for _, part in ipairs(character:GetDescendants()) do
+				if part:IsA("BasePart") then
+					part.Massless = true
+				end
+			end
 
-			-- Position it with the player
-			flingPart.CFrame = hrp.CFrame
+			-- Enable PlatformStand for more control (optional)
+			local humanoid = character:FindFirstChildOfClass("Humanoid")
+			if humanoid then
+				humanoid.PlatformStand = true
+			end
 
-			-- Weld to the player
-			weld = Instance.new("WeldConstraint")
-			weld.Part0 = hrp
-			weld.Part1 = flingPart
-			weld.Parent = flingPart
-
-			-- Add BodyAngularVelocity
-			bodyAngularVelocity = Instance.new("BodyAngularVelocity")
-			bodyAngularVelocity.AngularVelocity = Vector3.new(0, 50000, 0)
-			bodyAngularVelocity.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)
-			bodyAngularVelocity.P = 100000
-			bodyAngularVelocity.Parent = flingPart
+			-- Constantly spin the HRP using AssemblyAngularVelocity
+			spinConnection = RunService.Heartbeat:Connect(function()
+				hrp.AssemblyAngularVelocity = Vector3.new(0, 150, 0) -- Spin fast around Y axis
+			end)
 		else
-			-- Cleanup
-			if bodyAngularVelocity then
-				bodyAngularVelocity:Destroy()
-				bodyAngularVelocity = nil
+			if spinConnection then
+				spinConnection:Disconnect()
+				spinConnection = nil
 			end
-			if weld then
-				weld:Destroy()
-				weld = nil
+
+			-- Stop spinning
+			hrp.AssemblyAngularVelocity = Vector3.zero
+
+			-- Reset physics if desired
+			local humanoid = character:FindFirstChildOfClass("Humanoid")
+			if humanoid then
+				humanoid.PlatformStand = false
 			end
-			if flingPart then
-				flingPart:Destroy()
-				flingPart = nil
+
+			for _, part in ipairs(character:GetDescendants()) do
+				if part:IsA("BasePart") then
+					part.Massless = false
+				end
 			end
 		end
 	end,
